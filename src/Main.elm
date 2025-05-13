@@ -100,6 +100,6 @@ random =
 view : Model -> Html Msg
 view { prompt } =
     div [ class "flex flex-col gap-6 h-dvh container mx-auto p-8" ]
-        [ div [ class "text-5xl md:text-8xl font-bold flex-1 md:py-18 leading-14 md:leading-24" ] [ text prompt ]
+        [ div [ class "text-5xl md:text-8xl font-bold flex-1 md:py-18 leading-16 md:leading-30" ] [ text prompt ]
         , button [ class "btn btn-xl btn-accent self-start", onClick RequestPrompt ] [ text "Next" ]
         ]
