@@ -44,16 +44,12 @@ update msg model =
 
 random : Cmd Msg
 random =
-    prompts
-        |> List.head
-        |> Maybe.withDefault ""
-        |> (\first ->
-                prompts
-                    |> List.tail
-                    |> Maybe.withDefault []
-                    |> Random.uniform first
-                    |> Random.generate Next
-           )
+    case prompts of
+        [] ->
+            Cmd.none
+
+        first :: rest ->
+            Random.generate Next (Random.uniform first rest)
 
 
 view : Model -> Html Msg
