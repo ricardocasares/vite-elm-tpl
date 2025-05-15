@@ -1,4 +1,3 @@
-import "./main.css";
 // @ts-expect-error
 import { Elm } from "./Main.elm";
 
