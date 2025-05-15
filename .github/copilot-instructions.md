@@ -2,7 +2,10 @@
 
 This codebase uses Elm, a pure functional language.
 
-- Use version 0.19.1 when generating code
+## Rules
+
+- Keep your responses short
+- Use Elm version 0.19.1 when generating code
 - Always use the `elm` compiler as your guide
 - Use the @terminal to see the compiler errors
 - Run `elm make src/Main.elm --output=/dev/null` on the @terminal to check for compiler errors
@@ -10,8 +13,7 @@ This codebase uses Elm, a pure functional language.
 - Keep `update` function clean and readable
 - Create small reusable functions
 - Keep indentation low by using pipeline operator |>
-
-Each code example shown here has an bad pattern and a good pattern, always follow the good patterns.
+- Each code example shown here has an bad pattern and a good pattern, always follow the good patterns.
 
 ## Avoid Type Blindness
 
