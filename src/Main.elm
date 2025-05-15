@@ -2,7 +2,7 @@ module Main exposing (Model, Msg(..), main, view)
 
 import Browser
 import Html exposing (Html, button, div, text)
-import Html.Attributes exposing (class)
+import Html.Attributes exposing (attribute, class)
 import Html.Events exposing (onClick)
 import Random
 
@@ -19,12 +19,49 @@ type Msg
 
 main : Program () Model Msg
 main =
-    Browser.element { init = init, update = update, view = view, subscriptions = \_ -> Sub.none }
+    Browser.element
+        { init = init
+        , update = update
+        , view = view
+        , subscriptions = \_ -> Sub.none
+        }
 
 
 init : () -> ( Model, Cmd Msg )
 init _ =
     ( { prompt = "" }, random )
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        Next prompt ->
+            ( { model | prompt = prompt }, Cmd.none )
+
+        RequestPrompt ->
+            ( model, random )
+
+
+random : Cmd Msg
+random =
+    prompts
+        |> List.head
+        |> Maybe.withDefault ""
+        |> (\first ->
+                prompts
+                    |> List.tail
+                    |> Maybe.withDefault []
+                    |> Random.uniform first
+                    |> Random.generate Next
+           )
+
+
+view : Model -> Html Msg
+view { prompt } =
+    div [ class "flex flex-col gap-6 h-dvh container mx-auto p-8" ]
+        [ div [ class "text-5xl md:text-8xl font-bold flex-1 md:py-18 leading-16 md:leading-30 hyphens-auto", attribute "lang" "en" ] [ text prompt ]
+        , button [ class "btn btn-xl btn-accent self-start", onClick RequestPrompt ] [ text "Next" ]
+        ]
 
 
 prompts : List String
@@ -79,27 +116,48 @@ prompts =
     , "Create a podcast for an audience of house spiders."
     , "Write an acceptance speech for 'Most Average Person'."
     , "Design a theme park where nothing is fun."
+    , "Host a spelling bee for words that don't exist."
+    , "Give a weather forecast for the inside of your fridge."
+    , "Be a motivational speaker for lazy cats."
+    , "Describe your last sneeze as if it were a natural disaster."
+    , "Pitch a business idea for renting out imaginary friends."
+    , "Be a travel agent for time travelers stuck in traffic."
+    , "Write a breakup letter from your left sock to your right sock."
+    , "Host a cooking show where the main ingredient is disappointment."
+    , "Give a TED talk about the importance of blinking."
+    , "Be a game show host for a game with no rules."
+    , "Narrate a wildlife documentary about dust mites."
+    , "Interview your alarm clock about its hopes and dreams."
+    , "Be a therapist for overworked staplers."
+    , "Describe a day in the life of a confused umbrella."
+    , "Host a talent show for invisible pets."
+    , "Write a poem from the perspective of a lost pen cap."
+    , "Give a eulogy for a broken pencil."
+    , "Be a news anchor reporting on the latest pillow fight."
+    , "Explain the internet to a potato."
+    , "Host a fashion show for mismatched socks."
+    , "Be a sports commentator for competitive yawning."
+    , "Write a love song from a chair to a table."
+    , "Describe your morning routine as an epic quest."
+    , "Be a detective investigating the case of the missing left turn."
+    , "Host a spelling contest for robots who only speak in beeps."
+    , "Give a weather update for the land of forgotten passwords."
+    , "Be a motivational coach for procrastinating goldfish."
+    , "Describe your last hiccup as a world event."
+    , "Pitch a startup that delivers invisible packages."
+    , "Be a travel blogger reviewing imaginary planets."
+    , "Write a diary entry from the perspective of a bored doormat."
+    , "Host a cooking show where every recipe is just toast."
+    , "Give a TED talk about the philosophy of waiting in line."
+    , "Be a referee for a staring contest between statues."
+    , "Narrate a nature documentary about socks in the dryer."
+    , "Interview your refrigerator about its midnight adventures."
+    , "Be a therapist for pens that have run out of ink."
+    , "Describe a day in the life of a confused traffic cone."
+    , "Host a talent show for forgotten passwords."
+    , "Write a poem from the perspective of a lonely paperclip."
+    , "Give a eulogy for a retired eraser."
+    , "Be a news anchor reporting on the latest paper airplane race."
+    , "Explain social media to a medieval knight."
+    , "Host a fashion show for outdated technology."
     ]
-
-
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    case msg of
-        Next prompt ->
-            ( { model | prompt = prompt }, Cmd.none )
-
-        RequestPrompt ->
-            ( model, random )
-
-
-random : Cmd Msg
-random =
-    Random.generate Next (Random.uniform (Maybe.withDefault "" (List.head prompts)) (Maybe.withDefault [] (List.tail prompts)))
-
-
-view : Model -> Html Msg
-view { prompt } =
-    div [ class "flex flex-col gap-6 h-dvh container mx-auto p-8" ]
-        [ div [ class "text-5xl md:text-8xl font-bold flex-1 md:py-18 leading-16 md:leading-30" ] [ text prompt ]
-        , button [ class "btn btn-xl btn-accent self-start", onClick RequestPrompt ] [ text "Next" ]
-        ]
