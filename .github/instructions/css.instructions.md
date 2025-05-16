@@ -8,9 +8,9 @@ applyTo: "**/*.{elm,css}"
 - Use `DaisyUI` v5 pre-made components
 - Use Context7 MCP server to learn how to use `DaisyUI` and `tailwindcss`
 
-## Elm Elements
+## Using CSS classes in Elm
 
-When creating elements in Elm language, always favor composability:
+When creating components in Elm language, always favor composability:
 
 ```elm
 -- Bad: This element cannot be extended or composed
