@@ -2,13 +2,15 @@
 
 This codebase uses Elm, a pure functional language.
 
-## Rules
+## Guidelines
 
-- Keep your responses short
-- Use Elm version 0.19.1 when generating code
+- Keep your responses short and concise
+- This project uses Vite v5 to bundle source files
+- Use Elm v0.19.1 when generating Elm code
 - Always use the `elm` compiler as your guide
-- Use the @terminal to see the compiler errors
+- Use the #problems panel to solve issues
 - Run `elm make src/Main.elm --output=/dev/null` on the @terminal to check for compiler errors
+- Check the #problems tab to resolve issues
 - Run `bun dev` on the @terminal to get a working http server
 - Keep `update` function clean and readable
 - Create small reusable functions
@@ -55,7 +57,7 @@ userCard maybeUser =
 ## Wrap Custom Types early
 
 Wrap custom types early, ie: just after fetching data from external sources.
-Then try to unwrap as late as possible, as this enforces custom types throughout the code.
+Then try to unwrap as late as possible, enforcing the types throughout the code.
 
 ```elm
 -- Bad: This function could take any Float, not just Dollars
