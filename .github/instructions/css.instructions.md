@@ -4,9 +4,10 @@ applyTo: "**/*.{elm,css}"
 
 # CSS Instructions
 
-- Use `tailwindcss` v4 classes
-- Use `DaisyUI` v5 pre-made components
-- Use Context7 MCP server to learn how to use `DaisyUI` and `tailwindcss`
+- @tailwindcss/vite dependency is already installed and configured
+- daisyui dependency is already installed and configured
+- src/main.css is already present and configured
+- Do not install any dependencies for customizing styles
 
 ## Using CSS classes in Elm
 

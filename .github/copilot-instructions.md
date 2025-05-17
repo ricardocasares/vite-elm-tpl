@@ -5,18 +5,17 @@ This codebase uses Elm, a pure functional language.
 ## General Guidelines
 
 - Keep your responses short and concise
-- This project uses Vite v5 to bundle source files
-- Use Elm v0.19.1 when generating Elm code
-- Always use the `elm` compiler as your guide
-- Run `elm make src/Main.elm --output=/dev/null` on the @terminal to check for compiler errors
-- Keep the `update` function clean and readable
-- Keep indentation low by using pipeline operator |>
-- Create new modules only around custom types when needed
-- Create small reusable functions
+- vite dependency is already installed and configured for bundling sources
 - Use `bun dev` on the @terminal to get a working http server
+- Run `bun compile` on the @terminal to check for Elm compiler errors
 - Run `bun lint` on the @terminal for linting Elm files and fix errors
 - Run `bun run test` on the @terminal for testing your changes
+- Use Elm v0.19.1 when generating Elm code
+- Minimize usage of external dependencies
 - Check the #problems tab to resolve issues
+- Create small reusable functions
+- Keep the `update` function clean and readable
+- Keep indentation low by using ELm's pipeline operator |>
 
 ## Commit messages
 
