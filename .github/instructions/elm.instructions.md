@@ -12,8 +12,16 @@ applyTo: "**/*.elm"
 ## TypeScript Interop
 
 Read `@src/InteropDefinitions.elm` first, when trying to interop with TypeScript.
-Add variants to `ToElm` and `FromElm` types in order to add new features.
-This makes working in TypeScript very similar as handling messages in Elm.
+
+- Add variants to `ToElm` and `FromElm` types in order to add new features.
+- Handle new variants in Elm's `subscrition` function.
+- Handle new variants in `@src/main.ts` at the `subcribe(msg => ...)` function call.
+- This makes working in TypeScript very similar as handling messages in Elm.
+
+## Routing
+
+- Use `@src/Routes.elm` to add new routes.
+- Handle new route variants for the `Route` type in `@src/Main.elm`
 
 ## Avoid Type Blindness
 
