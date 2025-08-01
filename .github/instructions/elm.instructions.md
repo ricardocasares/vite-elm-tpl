@@ -14,6 +14,9 @@ applyTo: "**/*.elm"
 CRITICAL:
 Never use TypeScript for application logic! Always prefer Elm code over TypeScript.
 
+CRITICAL:
+Always run `bun interop` after modifying `InteropDefinitions.elm` to get up-to-date type definitions.
+
 Read `@src/InteropDefinitions.elm` first, when trying to interop with TypeScript.
 
 - Add variants to `ToElm` and `FromElm` types in order to add new features.
