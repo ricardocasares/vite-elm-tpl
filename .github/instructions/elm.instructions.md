@@ -14,7 +14,9 @@ applyTo: "**/*.elm"
 Read `@src/InteropDefinitions.elm` first, when trying to interop with TypeScript.
 
 - Add variants to `ToElm` and `FromElm` types in order to add new features.
-- Handle new variants in Elm's `subscrition` function.
+- Create codecs for the new types.
+- Run `bun interop` in order to generate the new Typescript definitions.
+- Handle new variants in Elm's `subscription` function.
 - Handle new variants in `@src/main.ts` at the `subcribe(msg => ...)` function call.
 - This makes working in TypeScript very similar as handling messages in Elm.
 
