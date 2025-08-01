@@ -6,14 +6,18 @@ This is just a placeholder
 
 ```elm
 type alias Model =
-    { count : Int }
+    { -- New Model Records
+    , count : Int
+    }
 ```
 
 ## Message Changes
 
 ```elm
 type Msg
-    = Increment
+    =
+    -- New Message Variants
+    | Increment
     | Decrement
     | Reset
 ```
@@ -23,6 +27,7 @@ type Msg
 ```elm
 type Route
     = Home
+    -- New Route Variants
     | Counter
 ```
 
@@ -32,6 +37,8 @@ type Route
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
+        -- Previous Message Handlers
+        -- New Message Handlers
         Reset ->
             (
                 model | counter = 0,
@@ -66,6 +73,7 @@ const app = Elm.Main.init({
 
 app.ports.interopFromElm.subcribe((msg) =>
   match<FromElm>(msg)
+    // previous handlers
     .with({ tag: "SaveCount" }, ({ count }) => saveCount(count))
     .exhaustive()
 );
