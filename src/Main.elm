@@ -1,35 +1,43 @@
-module Main exposing (Model, Msg(..), main, view)
+module Main exposing (Model, Msg(..), main, view, viewBody, viewBodyForTesting)
 
 import Browser
+import Browser.Navigation as Nav
 import Html exposing (Html, button, div, text)
 import Html.Attributes exposing (attribute, class)
 import Html.Events exposing (onClick)
 import Random
+import Url
 
 
 type alias Model =
     { prompt : String
+    , key : Nav.Key
+    , url : Url.Url
     }
 
 
 type Msg
     = Next String
     | RequestPrompt
+    | LinkClicked Browser.UrlRequest
+    | UrlChanged Url.Url
 
 
 main : Program () Model Msg
 main =
-    Browser.element
+    Browser.application
         { init = init
         , update = update
         , view = view
         , subscriptions = \_ -> Sub.none
+        , onUrlRequest = LinkClicked
+        , onUrlChange = UrlChanged
         }
 
 
-init : () -> ( Model, Cmd Msg )
-init _ =
-    ( { prompt = "" }, random )
+init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
+init _ url key =
+    ( { prompt = "", key = key, url = url }, random )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -40,6 +48,17 @@ update msg model =
 
         RequestPrompt ->
             ( model, random )
+
+        LinkClicked urlRequest ->
+            case urlRequest of
+                Browser.Internal url ->
+                    ( model, Nav.pushUrl model.key (Url.toString url) )
+
+                Browser.External href ->
+                    ( model, Nav.load href )
+
+        UrlChanged url ->
+            ( { model | url = url }, Cmd.none )
 
 
 random : Cmd Msg
@@ -52,8 +71,23 @@ random =
             Random.generate Next (Random.uniform first rest)
 
 
-view : Model -> Html Msg
-view { prompt } =
+view : Model -> Browser.Document Msg
+view model =
+    { title = "Vite Elm Template"
+    , body = [ viewBody model ]
+    }
+
+
+viewBody : Model -> Html Msg
+viewBody { prompt } =
+    div [ class "flex flex-col gap-6 h-dvh container mx-auto p-8" ]
+        [ div [ class "text-5xl md:text-8xl font-bold flex-1 md:py-18 leading-16 md:leading-30 hyphens-auto", attribute "lang" "en" ] [ text prompt ]
+        , button [ class "btn btn-xl btn-accent self-start", onClick RequestPrompt ] [ text "Next" ]
+        ]
+
+
+viewBodyForTesting : String -> Html Msg
+viewBodyForTesting prompt =
     div [ class "flex flex-col gap-6 h-dvh container mx-auto p-8" ]
         [ div [ class "text-5xl md:text-8xl font-bold flex-1 md:py-18 leading-16 md:leading-30 hyphens-auto", attribute "lang" "en" ] [ text prompt ]
         , button [ class "btn btn-xl btn-accent self-start", onClick RequestPrompt ] [ text "Next" ]
