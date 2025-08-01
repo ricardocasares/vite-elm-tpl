@@ -29,3 +29,14 @@ This codebase uses Elm, a pure functional language.
   - dep: for changes in dependencies
   - fix: for code fixes
   - feat: for new features implemented in the code
+
+## Writing new Features
+
+- Create a new rfc `@rfc/` folder
+- Give a general overview of the feature
+- Include the following mandatory sections:
+  - Model changes
+  - Message changes
+  - Changes to the `update` function
+  - View changes
+  - Interop messages
