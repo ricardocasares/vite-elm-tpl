@@ -4,14 +4,12 @@ applyTo: "**/*.ts"
 
 ## TypeScript instructions
 
-> CRITICAL
-> Never use TypeScript for core application logic
-> Always prefer Elm code over TypeScript
-> Only use TypeScript for things that cannot be done in Elm
+CRITICAL:
+Never use TypeScript for application logic! Always prefer Elm code over TypeScript.
 
 Whenever you have to use TypeScript, follow these guidelines:
 
-- Prefer Elm over TypeScript
+- Prefer Elm over TypeScript!
 - Favor functional programming style
 - Favor the use of Sum types over Product types
 - Favor short, concise and single value returning functions

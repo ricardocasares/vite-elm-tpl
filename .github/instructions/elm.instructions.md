@@ -11,10 +11,8 @@ applyTo: "**/*.elm"
 
 ## TypeScript Interop
 
-> CRITICAL
-> Never use TypeScript for core application logic
-> Always prefer Elm code over TypeScript
-> Only use TypeScript for things that cannot be done in Elm
+CRITICAL:
+Never use TypeScript for application logic! Always prefer Elm code over TypeScript.
 
 Read `@src/InteropDefinitions.elm` first, when trying to interop with TypeScript.
 
