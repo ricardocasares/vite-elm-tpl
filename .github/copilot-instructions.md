@@ -38,6 +38,6 @@ This codebase uses Elm, a pure functional language.
 - Include the following mandatory sections:
   - Model changes
   - Message changes
+  - Routing changes
   - Changes to the `update` function
-  - View changes
   - Interop messages
