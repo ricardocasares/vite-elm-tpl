@@ -8,6 +8,7 @@ import Html.Events exposing (onClick)
 import InteropDefinitions as IO
 import InteropPorts as IO
 import Random
+import Routes exposing (Route(..))
 import Url
 
 
@@ -15,6 +16,7 @@ type alias Model =
     { prompt : String
     , key : Nav.Key
     , url : Url.Url
+    , route : Route
     }
 
 
@@ -44,6 +46,7 @@ init _ url key =
     ( { prompt = ""
       , key = key
       , url = url
+      , route = Routes.fromUrl url
       }
     , Cmd.batch
         [ random
@@ -92,7 +95,7 @@ update msg model =
                     ( model, Nav.load href )
 
         UrlChanged url ->
-            ( { model | url = url }, Cmd.none )
+            ( { model | url = url, route = Routes.fromUrl url }, Cmd.none )
 
 
 random : Cmd Msg
@@ -113,7 +116,14 @@ view model =
 
 
 viewBody : Model -> Html Msg
-viewBody { prompt } =
+viewBody model =
+    case model.route of
+        Home ->
+            viewHome model.prompt
+
+
+viewHome : String -> Html Msg
+viewHome prompt =
     div [ class "flex flex-col gap-6 h-dvh container mx-auto p-8" ]
         [ div [ class "text-5xl md:text-8xl font-bold flex-1 md:py-18 leading-16 md:leading-30 hyphens-auto", attribute "lang" "en" ] [ text prompt ]
         , button [ class "btn btn-xl btn-accent self-start", onClick RequestPrompt ] [ text "Next" ]
