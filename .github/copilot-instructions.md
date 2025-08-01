@@ -16,7 +16,7 @@ This codebase uses Elm, a pure functional language.
 - Check the #problems tab to resolve issues
 - Create small reusable functions
 - Keep the `update` function clean and readable
-- Keep indentation low by using ELm's pipeline operator `|>`
+- Keep indentation low by using Elm's pipeline operator `|>`
 
 ## Commit messages
 

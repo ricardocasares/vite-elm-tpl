@@ -9,6 +9,12 @@ applyTo: "**/*.elm"
   - Bad: Avoid writting code in this way
   - Good: Always try to use the good patterns where they apply
 
+## TypeScript Interop
+
+Read `@src/InteropDefinitions.elm` first, when trying to interop with TypeScript.
+Add variants to `ToElm` and `FromElm` types in order to add new features.
+This makes working in TypeScript very similar as handling messages in Elm.
+
 ## Avoid Type Blindness
 
 Type blindness is when you have several values of the same type that could get mixed up.
