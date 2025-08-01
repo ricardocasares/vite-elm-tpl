@@ -57,8 +57,15 @@ type FromElm
 ```
 
 ```typescript
+import { match } from "ts-pattern";
+import { Elm, type FromElm } from "@/Main.elm";
+
+const app = Elm.Main.init({
+  node: document.getElementById("app"),
+});
+
 app.ports.interopFromElm.subcribe((msg) =>
-  match(msg)
+  match<FromElm>(msg)
     .with({ tag: "SaveCount" }, ({ count }) => saveCount(count))
     .exhaustive()
 );
