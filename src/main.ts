@@ -1,4 +1,5 @@
-import { Elm } from "./Main.elm";
+import { match } from "ts-pattern";
+import { Elm, type FromElm } from "@/Main.elm";
 
 const basePath = import.meta.env.BASE_URL;
 const node = document.getElementById("app");
@@ -14,11 +15,8 @@ const {
   },
 });
 
-subscribe((m) => {
-  switch (m.tag) {
-    case "ElmReady":
-      return send({ tag: "JSReady" });
-    default:
-      throw Error("Unrecognized message");
-  }
-});
+subscribe((m) =>
+  match<FromElm>(m)
+    .with({ tag: "ElmReady" }, () => send({ tag: "JSReady" }))
+    .exhaustive()
+);
