@@ -10,6 +10,7 @@ Never use TypeScript for application logic! Always prefer Elm code over TypeScri
 Whenever you have to use TypeScript, follow these guidelines:
 
 - Prefer Elm over TypeScript!
+- Never modify `tsconfig.json`!
 - Favor functional programming style
 - Favor the use of Sum types over Product types
 - Favor short, concise and single value returning functions
