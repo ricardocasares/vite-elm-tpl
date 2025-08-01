@@ -32,7 +32,7 @@ This codebase uses Elm, a pure functional language.
 
 ## Writing new Features
 
-- Create a new rfc inside `@rfc/` folder
+- Create a new rfc inside `rfc/` folder
 - Name files using the pattern: `001-feature.md`
 - Give a general overview of the feature
 - Include the following mandatory sections:
