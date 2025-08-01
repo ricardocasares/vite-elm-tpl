@@ -1,10 +1,12 @@
-module Main exposing (Model, Msg(..), main, view, viewBody, viewBodyForTesting)
+module Main exposing (Model, Msg(..), main, viewBodyForTesting)
 
 import Browser
 import Browser.Navigation as Nav
 import Html exposing (Html, button, div, text)
 import Html.Attributes exposing (attribute, class)
 import Html.Events exposing (onClick)
+import InteropDefinitions as IO
+import InteropPorts as IO
 import Random
 import Url
 
@@ -17,32 +19,64 @@ type alias Model =
 
 
 type Msg
-    = Next String
+    = NoOp
+    | JSReady
+    | Next String
     | RequestPrompt
     | LinkClicked Browser.UrlRequest
     | UrlChanged Url.Url
 
 
-main : Program () Model Msg
+main : Program IO.Flags Model Msg
 main =
     Browser.application
         { init = init
         , update = update
         , view = view
-        , subscriptions = \_ -> Sub.none
+        , subscriptions = subscriptions
         , onUrlRequest = LinkClicked
         , onUrlChange = UrlChanged
         }
 
 
-init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
+init : IO.Flags -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
 init _ url key =
-    ( { prompt = "", key = key, url = url }, random )
+    ( { prompt = ""
+      , key = key
+      , url = url
+      }
+    , Cmd.batch
+        [ random
+        , IO.fromElm IO.ElmReady
+        ]
+    )
+
+
+subscriptions : Model -> Sub Msg
+subscriptions _ =
+    IO.toElm
+        |> Sub.map
+            (\result ->
+                case result of
+                    Ok data ->
+                        case data of
+                            IO.JSReady ->
+                                JSReady
+
+                    Err _ ->
+                        NoOp
+            )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
+        NoOp ->
+            ( model, Cmd.none )
+
+        JSReady ->
+            ( model, Cmd.none )
+
         Next prompt ->
             ( { model | prompt = prompt }, Cmd.none )
 
