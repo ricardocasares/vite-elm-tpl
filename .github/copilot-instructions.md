@@ -4,14 +4,12 @@ This codebase uses Elm, a pure functional language.
 
 ## General Guidelines
 
-- Keep your responses short and concise
-- Vite dependency is already installed and configured
-- Use Elm v0.19.1 when generating Elm code
-- Minimize usage of external dependencies
-- Check the #problems tab to resolve issues
-- Create small reusable functions
-- Keep the `update` function clean and readable
-- Keep indentation low by using Elm's pipeline operator `|>`
+- keep your responses short and concise
+- vite dependency is already installed and configured
+- use Elm v0.19.1 when generating Elm code
+- minimize usage of external dependencies
+- check the #problems tab to resolve issues
+- always use bun as package manager for npm packages
 
 ## Commit messages
 
