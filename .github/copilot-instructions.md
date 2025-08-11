@@ -15,7 +15,7 @@ This codebase uses Elm, a pure functional language.
 
 ## Commit messages
 
-- Keep commit messages short and concise
+- Keep commit messages very short and concise
 - Choose one of the following prefixes:
   - ai: for changes made to copilot instructions
   - ui: for cosmetic changes only
@@ -24,6 +24,7 @@ This codebase uses Elm, a pure functional language.
   - dep: for changes in dependencies
   - fix: for code fixes
   - feat: for new features implemented in the code
+- use a combination of the above when multiple criterias match
 
 ## Writing new Features
 
