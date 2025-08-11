@@ -4,10 +4,41 @@ applyTo: "**/*.elm"
 
 # Elm Guidelines
 
-- Follow the best practice rules available in this document
-- Each rule has two code examples:
-  - Bad: Avoid writting code in this way
-  - Good: Always try to use the good patterns where they apply
+- follow the best practice rules available in this document
+- use the good practice from the code examples
+- when refactoring, modify the types first, then follow the compiler indications
+- avoid modeling impossible or illegal states
+
+## Commands
+
+- `elm make src/<ModuleName>.elm --out=/dev/null` to check a module compiles
+- `bun compile` to check the whole app compiles
+- `bun run test` to run all tests
+- `bun run test --filter "description"` to run test matching the filter
+- `bun lint` to check for linter errors
+- `bun lint --fix-all-without-prompt` to fix linting errors
+- `bun interop` to generate typesscript types after modyfing InteropDefinitions.elm
+
+## Avoiding impossible states
+
+Favor the use of custom types that precisely model the environment.
+
+```elm
+-- Bad: Data can't be present and loading at the same time
+type alias Model =
+    { isLoading: Bool
+    , data: Maybe Data
+    }
+
+-- Good: Data can be either loading or loaded
+type RemoteData
+    = Loading
+    | Loaded Data
+    | Failed Http.Error
+
+type alias Model =
+    { data : RemoteData }
+```
 
 ## TypeScript Interop
 
@@ -84,27 +115,6 @@ type Dollar = Dollar Float
 displayPriceInDollars : Dollar -> String
 displayPriceInDollars (Dollar price) =
     "USD$" ++ String.fromFloat price
-```
-
-## Avoid impossible states
-
-Favor the use of custom types that precisely model the environment.
-
-```elm
--- Bad: Data can't be present and loading at the same time
-type alias Model =
-    { isLoading: Bool
-    , data: Maybe Data
-    }
-
--- Good: Data can be either loading or loaded
-type RemoteData
-    = Loading
-    | Loaded Data
-    | Failed Http.Error
-
-type alias Model =
-    { data : RemoteData }
 ```
 
 ## Minimize `Bool` usage
