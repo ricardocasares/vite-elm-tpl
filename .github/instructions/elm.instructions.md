@@ -4,6 +4,7 @@ applyTo: "**/*.elm"
 
 # Elm Guidelines
 
+- always run the compiler after a small change
 - follow the best practice rules available in this document
 - use the good practice from the code examples
 - when refactoring, modify the types first, then follow the compiler indications
