@@ -211,25 +211,25 @@ viewDrawerSide currentRoute =
             (List.concat
                 [ [ -- User Info Section
                     li [ class "mb-4" ]
-                     [ div [ class "flex items-center gap-3 px-3 py-2" ]
-                         [ div [ class "avatar" ]
-                             [ div [ class "w-10 rounded-full" ]
-                                 [ Icon.userCircle Regular |> Icon.withClass "w-10 h-10" |> Icon.toHtml []
-                                 ]
-                             ]
-                         , div []
-                             [ div [ class "font-semibold" ] [ text "John Doe" ]
-                             , div [ class "text-sm opacity-70" ] [ text "john@example.com" ]
-                             ]
-                         ]
-                     ]
-                   , li [ class "menu-title" ] [ text "Navigation" ]
-                   ]
-                 , List.map (viewMenuItem currentRoute) navigationItems
-                 , [ li [ class "menu-title" ] [ text "Account" ] ]
-                 , List.map (viewMenuItem currentRoute) userActionItems
-                 ]
-             )
+                        [ div [ class "flex items-center gap-3 px-3 py-2" ]
+                            [ div [ class "avatar" ]
+                                [ div [ class "w-10 rounded-full" ]
+                                    [ Icon.userCircle Regular |> Icon.withClass "w-10 h-10" |> Icon.toHtml []
+                                    ]
+                                ]
+                            , div []
+                                [ div [ class "font-semibold" ] [ text "John Doe" ]
+                                , div [ class "text-sm opacity-70" ] [ text "john@example.com" ]
+                                ]
+                            ]
+                        ]
+                  , li [ class "menu-title" ] [ text "Navigation" ]
+                  ]
+                , List.map (viewMenuItem currentRoute) navigationItems
+                , [ li [ class "menu-title" ] [ text "Account" ] ]
+                , List.map (viewMenuItem currentRoute) userActionItems
+                ]
+            )
         ]
 
 
