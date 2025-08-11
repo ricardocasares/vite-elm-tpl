@@ -4,9 +4,9 @@ applyTo: "**/*.{elm,css}"
 
 # CSS Instructions
 
-- @tailwindcss/vite dependency is already installed and configured
-- daisyui dependency is already installed and configured
-- fetch docs from https://daisyui.com/llms.txt
+- tailwindcss v4 is already installed and configured
+- daisyui v5 is already installed and configured
+- always fetch docs from https://daisyui.com/llms.txt
 - follow daisyui's best practices
 - src/main.css is already present and configured
 - do not install any dependencies for customizing styles
