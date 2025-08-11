@@ -13,7 +13,7 @@ applyTo: "**/*.elm"
 
 ## Commands
 
-- `elm make src/<ModuleName>.elm --out=/dev/null` to check a module compiles
+- `elm make src/<ModuleName>.elm --output=/dev/null` to check a module compiles
 - `bun compile` to check the whole app compiles
 - `bun run test` to run all tests
 - `bun run test --filter "description"` to run test matching the filter
