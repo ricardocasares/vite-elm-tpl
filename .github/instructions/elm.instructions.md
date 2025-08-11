@@ -9,6 +9,7 @@ applyTo: "**/*.elm"
 - use the good practice from the code examples
 - when refactoring, modify the types first, then follow the compiler indications
 - avoid modeling impossible or illegal states
+- never edit `elm.json` manually
 
 ## Commands
 
@@ -19,6 +20,8 @@ applyTo: "**/*.elm"
 - `bun lint` to check for linter errors
 - `bun lint --fix-all-without-prompt` to fix linting errors
 - `bun interop` to generate typesscript types after modyfing InteropDefinitions.elm
+- `elm-json install <package-name> --yes` to install packages
+- `elm-json uninstall <package-name> --yes` to uninstall packages
 
 ## Avoiding impossible states
 
