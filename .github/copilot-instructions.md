@@ -31,7 +31,7 @@ When asked to write new features:
   - Changes to `type Msg` required
   - Changes to `type Routes` required
   - Interop messages
-  - Step-by-step checklist for implementation
+  - Track list with checkboxes for implementation
 - **CRITICAL:** Ask follow up questions
 - **CRITICAL:** Ask for approval
 - Use the RFC as source of truth to implement after approval
