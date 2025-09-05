@@ -5,6 +5,7 @@ applyTo: "**/*.elm"
 # Elm Guidelines
 
 - **CRITICAL:** Never edit `elm.json` manually
+- **CRITICAL:** Never use `Debug.todo` in generated code
 - **CRITICAL:** Let the compiler guide the refactoring
 - **CRITICAL:** Avoid modeling ambiguous or illegal states
 - **CRITICAL:** Unwrap `Maybe`, `Result` or `RemoteData` early
@@ -12,8 +13,8 @@ applyTo: "**/*.elm"
 
 ## Commands
 
-- `elm make src/<ModuleName>.elm --output=/dev/null` to check a module compiles
-- `bun compile` to check the whole app compiles
+- **CRITICAL**: `elm make src/<ModuleName>.elm --output=/dev/null` to check a module compiles
+- **CRITICAL**: `bun compile` to check the whole app compiles
 - `bun run test` to run all tests
 - `bun run test --filter "description"` to run test matching the filter
 - `bun lint` to check for linter errors

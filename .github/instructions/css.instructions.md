@@ -11,23 +11,29 @@ applyTo: "**/*.{elm,css}"
 - src/main.css is already present and configured
 - do not install any dependencies for customizing styles
 
-## Using CSS classes in Elm
+## Creating UI components
+
+Always create reusable UI components in `UI` folder:
+
+```elm
+-- UI/Alert.elm
+module UI.Alert exposing (..)
+```
+
+**CRITICAL**:
+For complex UI elements that require compile time constraints read [Enforcing build order](./elm.patterns.md)
+
+## Composability
 
 When creating components in Elm language, always favor composability:
 
 ```elm
--- Bad: This element cannot be extended or composed
-card: String -> Html msg
-card title = div [ class "card bg-info" ] [ text title ]
-
-
--- Good: The card element can be extended with new classes
 card: List (Attribute msg) -> List (Html msg) -> Html msg
 card attr children =
-    div ([ class "card bg-info" ] ++ attrs) children
+    div (class "card bg-info" :: attrs) children
 
-
--- Good: The card element can be composed with children
 view model =
     card [ class "text-3xl" ] [ button [ class "button" ] [ text "Button" ] ]
 ```
+
+This component is composable and can be customized.
