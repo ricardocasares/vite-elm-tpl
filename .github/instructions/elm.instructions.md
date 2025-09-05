@@ -4,12 +4,12 @@ applyTo: "**/*.elm"
 
 # Elm Guidelines
 
+- **CRITICAL:** Never use `Debug.todo`
 - **CRITICAL:** Never edit `elm.json` manually
-- **CRITICAL:** Never use `Debug.todo` in generated code
 - **CRITICAL:** Let the compiler guide the refactoring
-- **CRITICAL:** Avoid modeling ambiguous or illegal states
+- **CRITICAL:** Avoid ambiguous or illegal states
 - **CRITICAL:** Unwrap `Maybe`, `Result` or `RemoteData` early
-- **CRITICAL:** Unwrap custom types when used as text in views
+- **CRITICAL:** Unwrap Custom Types only at the view level
 
 ## Commands
 

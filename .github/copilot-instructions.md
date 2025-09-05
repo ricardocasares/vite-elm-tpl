@@ -4,12 +4,37 @@ This codebase uses Elm, a pure functional language.
 
 ## General Guidelines
 
-- keep your responses short and concise
-- vite dependency is already installed and configured
-- use Elm v0.19.1 when generating Elm code
-- minimize usage of external dependencies
-- check the #problems tab to resolve issues
-- always use bun as package manager for npm packages
+- Keep your responses short and concise
+- Use Elm v0.19.1 when generating Elm code
+- Minimize usage of external dependencies
+
+## Commands
+
+- `bun add <package>` to add npm packages
+- `bun remove <package>` to remove npm packages
+- `elm-json install <package-name> --yes` to install Elm packages
+- `elm-json uninstall <package-name> --yes` to uninstall Elm packages
+
+## Writing new Features
+
+When asked to write new features:
+
+- Read @.github/instructions/elm.instructions.md
+- Read @.github/instructions/elm.patterns.md
+- Create a new rfc inside @rfc folder
+- Name files using the pattern: `00X-feature-name-xxx.md`
+- Focus on required type definitions only
+- Include the following mandatory sections:
+  - Overview
+  - New Custom Types needed
+  - Changes to `type Model` required
+  - Changes to `type Msg` required
+  - Changes to `type Routes` required
+  - Interop messages
+  - Step-by-step checklist for implementation
+- **CRITICAL:** Ask follow up questions
+- **CRITICAL:** Ask for approval
+- Use the RFC as source of truth to implement after approval
 
 ## Commit messages
 
@@ -23,15 +48,3 @@ This codebase uses Elm, a pure functional language.
   - fix: for code fixes
   - feat: for new features implemented in the code
 - use a combination of the above when multiple criterias match
-
-## Writing new Features
-
-- Create a new rfc inside `./rfc` folder
-- Name files using the pattern: `00X-feature-name-xxx.md`
-- Give a general overview of the feature
-- Include the following mandatory sections:
-  - Model changes
-  - Message changes
-  - Routing changes
-  - Changes to the `update` function
-  - Interop messages
