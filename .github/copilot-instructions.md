@@ -31,7 +31,9 @@ When asked to write new features:
   - Changes to `type Msg` required
   - Changes to `type Routes` required
   - Interop messages
-  - Track list with checkboxes for implementation
+  - Implementation
+    - This is a TODO list with checkboxes
+    - Check items done when as you finish them
 - **CRITICAL:** Ask follow up questions
 - **CRITICAL:** Ask for approval
 - Use the RFC as source of truth to implement after approval
