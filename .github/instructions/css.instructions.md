@@ -4,12 +4,13 @@ applyTo: "**/*.{elm,css}"
 
 # CSS Instructions
 
-- tailwindcss v4 is already installed and configured
-- daisyui v5 is already installed and configured
-- always fetch docs from https://daisyui.com/llms.txt
-- follow daisyui's best practices
-- src/main.css is already present and configured
-- do not install any dependencies for customizing styles
+This project uses [DaisyUI](https://daisyui.com/) for styling the UI.
+
+**CRITICAL:** Fetch docs from https://daisyui.com/llms.txt
+
+- DaisyUI is installed and configured
+- Follow DaisyUI's best practices style guides
+- do not install any dependencies!
 
 ## Creating UI components
 
@@ -21,7 +22,7 @@ module UI.Alert exposing (..)
 ```
 
 **CRITICAL**:
-For complex UI elements that require compile time constraints read [Enforcing build order](./elm.patterns.md)
+For complex UI elements that require compile time constraints read @instructions/elm.patterns.md
 
 ## Composability
 
