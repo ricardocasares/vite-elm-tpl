@@ -25,11 +25,4 @@ Whenever you have to use TypeScript, follow these guidelines:
 
 ## Elm & TypeScript Interop
 
-**CRITICAL:**
-
-- Read `@src/InteropDefinitions.elm` first, when trying to interop with TypeScript.
-- Always run command `bun interop` after modifying `InteropDefinitions.elm` to get up-to-date type definitions.
-- Add variants to `ToElm` and `FromElm` types in order to add new features.
-- Handle messages in Elm's `subscription` function.
-- Handle new variants in `@src/main.ts` at the `subcribe(msg => ...)` function call.
-- This makes working in TypeScript very similar as handling messages in Elm.
+**CRITICAL:** Read @instructions/elm.interop.md

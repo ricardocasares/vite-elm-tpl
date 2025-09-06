@@ -68,13 +68,7 @@ type RemoteData err data
 
 ## Elm & TypeScript Interop
 
-**CRITICAL:**
-
-- Read `@src/InteropDefinitions.elm` first, when trying to interop with TypeScript
-- Use `ToElm` for incoming messages in ports
-- Use `FromElm` for outgoing messages in ports
-- Add variants to `ToElm` and `FromElm` types in order to add new features
-- Run `bun interop` after changing `InteropDefinitions.elm` to generate type definitions
+**CRITICAL:** Read @instructions/elm.interop.md
 
 ## Routing
 
